@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi29Av.Services.IServices;
 
@@ -17,6 +18,7 @@ namespace WebApi29Av.Controllers
 
 
         /// Obtiene todos los usuarios registrados.
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -26,6 +28,7 @@ namespace WebApi29Av.Controllers
 
         /// Obtiene un usuario por su ID.
         /// <param name="id">ID del usuario</param>
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetUser(int id)
         {
@@ -35,6 +38,7 @@ namespace WebApi29Av.Controllers
 
         /// Crea un nuevo usuario.
         /// <param name="request">Datos del usuario</param>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] UsuarioResponse request)
         {

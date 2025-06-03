@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi29Av.Services.IServices;
 
@@ -16,6 +17,7 @@ namespace WebApi29Av.Controllers
         }
 
         /// Obtiene todos los roles registrados.   
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -26,6 +28,7 @@ namespace WebApi29Av.Controllers
 
         /// Obtiene un rol por su ID.
         /// <param name="id">ID del rol</param>
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -35,6 +38,7 @@ namespace WebApi29Av.Controllers
 
         /// Crea un nuevo rol.
         /// <param name="request">Datos del rol</param>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] RolResponse request)
         {
@@ -44,6 +48,7 @@ namespace WebApi29Av.Controllers
 
         /// Elimina un rol por su ID.
         /// <param name="id">ID del rol</param>
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -58,6 +63,7 @@ namespace WebApi29Av.Controllers
         /// Actualiza los datos de un rol existente.
         /// <param name="id">ID del rol a actualizar</param>
         /// <param name="request">Datos actualizados</param>
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] RolResponse request)
         {
